@@ -3,1564 +3,609 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>You Are Not Alone — A Guide Through Grief</title>
-<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<meta name="description" content="Ash — IT Professional & Cybersecurity Specialist. Enterprise infrastructure, SOC analysis, and AI-powered security tools.">
+<title>Ash | IT & Cybersecurity Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;600;700&family=Manrope:wght@300;400;600;800&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --cream: #FDF6EE;
-    --warm-white: #FFFBF5;
-    --sand: #E8D5BB;
-    --terracotta: #C4714F;
-    --terracotta-light: #F0C4AD;
-    --terracotta-pale: #FBF0EA;
-    --teal: #2D7D6F;
-    --teal-light: #A8D5CD;
-    --teal-pale: #EBF5F3;
-    --indigo: #3D4F7C;
-    --indigo-light: #B3BCDA;
-    --indigo-pale: #EEF0F8;
-    --sage: #5C7A5F;
-    --sage-light: #B8CEB9;
-    --sage-pale: #EDF3ED;
-    --amber: #B5862A;
-    --amber-pale: #FFF8E7;
-    --rose: #9B4D6A;
-    --rose-pale: #F9EDF2;
-    --text-dark: #2C2420;
-    --text-mid: #5C4D44;
-    --text-soft: #8C7B72;
-    --border: #E0D0C0;
-  }
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--cream);
-    color: var(--text-dark);
-    line-height: 1.7;
-    overflow-x: hidden;
-  }
-
-  /* ── HERO ── */
-  .hero {
-    background: linear-gradient(160deg, #2D4A3E 0%, #1A3530 40%, #2D4F7C 100%);
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 60px 24px;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .hero::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(196,113,79,0.12) 0%, transparent 70%);
-  }
-
-  .hero-stars {
-    position: absolute;
-    inset: 0;
-    overflow: hidden;
-    pointer-events: none;
-  }
-
-  .star {
-    position: absolute;
-    width: 2px;
-    height: 2px;
-    background: rgba(255,255,255,0.6);
-    border-radius: 50%;
-    animation: twinkle var(--d, 3s) ease-in-out infinite alternate;
-    animation-delay: var(--delay, 0s);
-  }
-
-  @keyframes twinkle {
-    from { opacity: 0.2; transform: scale(1); }
-    to { opacity: 0.9; transform: scale(1.5); }
-  }
-
-  .hero-content {
-    position: relative;
-    z-index: 1;
-    max-width: 700px;
-  }
-
-  .hero-eyebrow {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 13px;
-    font-weight: 500;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--terracotta-light);
-    margin-bottom: 24px;
-    opacity: 0;
-    animation: fadeUp 0.8s ease forwards 0.3s;
-  }
-
-  .hero h1 {
-    font-family: 'Lora', serif;
-    font-size: clamp(36px, 7vw, 72px);
-    font-weight: 700;
-    color: #fff;
-    line-height: 1.15;
-    margin-bottom: 28px;
-    opacity: 0;
-    animation: fadeUp 0.8s ease forwards 0.5s;
-  }
-
-  .hero h1 em {
-    font-style: italic;
-    color: var(--terracotta-light);
-  }
-
-  .hero-sub {
-    font-size: 18px;
-    color: rgba(255,255,255,0.72);
-    font-weight: 300;
-    max-width: 520px;
-    margin: 0 auto 48px;
-    line-height: 1.8;
-    opacity: 0;
-    animation: fadeUp 0.8s ease forwards 0.7s;
-  }
-
-  .hero-cta {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    background: var(--terracotta);
-    color: #fff;
-    padding: 16px 36px;
-    border-radius: 50px;
-    font-size: 16px;
-    font-weight: 600;
-    text-decoration: none;
-    transition: all 0.3s;
-    opacity: 0;
-    animation: fadeUp 0.8s ease forwards 0.9s;
-  }
-
-  .hero-cta:hover {
-    background: #d4825f;
-    transform: translateY(-2px);
-    box-shadow: 0 12px 40px rgba(196,113,79,0.4);
-  }
-
-  .scroll-hint {
-    position: absolute;
-    bottom: 32px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-    color: rgba(255,255,255,0.4);
-    font-size: 12px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    animation: bounce 2s ease-in-out infinite;
-  }
-
-  .scroll-hint::after {
-    content: '';
-    width: 1px;
-    height: 40px;
-    background: linear-gradient(to bottom, rgba(255,255,255,0.4), transparent);
-  }
-
-  @keyframes bounce {
-    0%, 100% { transform: translateX(-50%) translateY(0); }
-    50% { transform: translateX(-50%) translateY(8px); }
-  }
-
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(24px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  /* ── NAV ── */
-  nav {
-    position: sticky;
-    top: 0;
-    background: rgba(253,246,238,0.95);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
-    z-index: 100;
-    padding: 0 24px;
-  }
-
-  .nav-inner {
-    max-width: 1100px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 60px;
-    gap: 16px;
-    flex-wrap: wrap;
-  }
-
-  .nav-logo {
-    font-family: 'Lora', serif;
-    font-size: 17px;
-    font-weight: 700;
-    color: var(--teal);
-    text-decoration: none;
-    flex-shrink: 0;
-  }
-
-  .nav-links {
-    display: flex;
-    gap: 4px;
-    flex-wrap: wrap;
-  }
-
-  .nav-links a {
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--text-mid);
-    text-decoration: none;
-    padding: 6px 12px;
-    border-radius: 20px;
-    transition: all 0.2s;
-  }
-
-  .nav-links a:hover {
-    background: var(--teal-pale);
-    color: var(--teal);
-  }
-
-  /* ── SECTIONS ── */
-  section {
-    padding: 80px 24px;
-  }
-
-  .container {
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-
-  .section-label {
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--terracotta);
-    margin-bottom: 16px;
-  }
-
-  .section-title {
-    font-family: 'Lora', serif;
-    font-size: clamp(28px, 4vw, 44px);
-    font-weight: 700;
-    color: var(--text-dark);
-    line-height: 1.25;
-    margin-bottom: 16px;
-  }
-
-  .section-intro {
-    font-size: 17px;
-    color: var(--text-soft);
-    max-width: 600px;
-    line-height: 1.8;
-    margin-bottom: 56px;
-  }
-
-  /* ── FEELINGS SECTION ── */
-  #feelings { background: var(--warm-white); }
-
-  .feelings-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 20px;
-  }
-
-  .feeling-card {
-    background: var(--cream);
-    border: 1.5px solid var(--border);
-    border-radius: 20px;
-    padding: 28px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .feeling-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 4px;
-    background: var(--accent, var(--teal));
-    border-radius: 20px 20px 0 0;
-    transform: scaleX(0);
-    transition: transform 0.3s;
-  }
-
-  .feeling-card:hover::before,
-  .feeling-card.active::before {
-    transform: scaleX(1);
-  }
-
-  .feeling-card:hover,
-  .feeling-card.active {
-    border-color: var(--accent, var(--teal));
-    transform: translateY(-4px);
-    box-shadow: 0 12px 40px rgba(0,0,0,0.1);
-    background: var(--accent-pale, var(--teal-pale));
-  }
-
-  .feeling-icon {
-    font-size: 36px;
-    margin-bottom: 16px;
-    display: block;
-  }
-
-  .feeling-card h3 {
-    font-family: 'Lora', serif;
-    font-size: 20px;
-    font-weight: 700;
-    color: var(--text-dark);
-    margin-bottom: 8px;
-  }
-
-  .feeling-card p {
-    font-size: 14px;
-    color: var(--text-soft);
-    line-height: 1.6;
-  }
-
-  .feeling-tag {
-    display: inline-block;
-    margin-top: 14px;
-    font-size: 12px;
-    font-weight: 600;
-    color: var(--accent, var(--teal));
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-  }
-
-  /* ── GUIDE PANEL ── */
-  .guide-panel {
-    display: none;
-    background: #fff;
-    border: 2px solid var(--border);
-    border-radius: 24px;
-    padding: 48px;
-    margin-top: 40px;
-    animation: slideIn 0.4s ease;
-  }
-
-  .guide-panel.visible {
-    display: block;
-  }
-
-  @keyframes slideIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  .guide-panel-header {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    margin-bottom: 36px;
-    padding-bottom: 28px;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .guide-panel-icon {
-    font-size: 48px;
-    flex-shrink: 0;
-  }
-
-  .guide-panel-header h2 {
-    font-family: 'Lora', serif;
-    font-size: 28px;
-    color: var(--text-dark);
-    font-weight: 700;
-  }
-
-  .guide-panel-header p {
-    font-size: 15px;
-    color: var(--text-soft);
-    margin-top: 6px;
-  }
-
-  .steps-list {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    margin-bottom: 40px;
-  }
-
-  .step-item {
-    display: flex;
-    gap: 20px;
-    padding: 24px;
-    background: var(--cream);
-    border-radius: 16px;
-    border: 1px solid var(--border);
-  }
-
-  .step-num {
-    width: 36px;
-    height: 36px;
-    background: var(--accent, var(--teal));
-    color: #fff;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 700;
-    font-size: 15px;
-    flex-shrink: 0;
-    margin-top: 2px;
-  }
-
-  .step-content h4 {
-    font-family: 'Lora', serif;
-    font-size: 17px;
-    font-weight: 700;
-    color: var(--text-dark);
-    margin-bottom: 6px;
-  }
-
-  .step-content p {
-    font-size: 14px;
-    color: var(--text-mid);
-    line-height: 1.7;
-  }
-
-  .step-tip {
-    margin-top: 10px;
-    padding: 10px 14px;
-    background: rgba(255,255,255,0.8);
-    border-left: 3px solid var(--accent, var(--teal));
-    border-radius: 0 8px 8px 0;
-    font-size: 13px;
-    color: var(--text-mid);
-    font-style: italic;
-  }
-
-  /* ── VIDEO SECTION ── */
-  .video-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 24px;
-    margin-bottom: 20px;
-  }
-
-  .video-card {
-    background: #fff;
-    border-radius: 16px;
-    overflow: hidden;
-    border: 1.5px solid var(--border);
-    transition: all 0.3s;
-  }
-
-  .video-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 16px 48px rgba(0,0,0,0.12);
-  }
-
-  .video-thumb {
-    position: relative;
-    padding-top: 56.25%;
-    background: var(--indigo-pale);
-    overflow: hidden;
-  }
-
-  .video-thumb iframe {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    border: none;
-  }
-
-  .video-thumb .play-overlay {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(to bottom, rgba(45,77,124,0.3), rgba(45,77,124,0.7));
-    cursor: pointer;
-    transition: all 0.3s;
-  }
-
-  .video-thumb .play-overlay:hover {
-    background: linear-gradient(to bottom, rgba(45,77,124,0.2), rgba(45,77,124,0.5));
-  }
-
-  .play-btn {
-    width: 64px;
-    height: 64px;
-    background: rgba(255,255,255,0.9);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 24px;
-    transition: transform 0.2s;
-  }
-
-  .play-overlay:hover .play-btn {
-    transform: scale(1.1);
-  }
-
-  .video-info {
-    padding: 20px;
-  }
-
-  .video-tag {
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--terracotta);
-    margin-bottom: 8px;
-  }
-
-  .video-info h4 {
-    font-family: 'Lora', serif;
-    font-size: 16px;
-    font-weight: 700;
-    color: var(--text-dark);
-    line-height: 1.4;
-    margin-bottom: 6px;
-  }
-
-  .video-info p {
-    font-size: 13px;
-    color: var(--text-soft);
-  }
-
-  /* ── BREATHING EXERCISE ── */
-  #breathe {
-    background: linear-gradient(160deg, #1A3530 0%, #2D4F7C 100%);
-    color: #fff;
-    text-align: center;
-  }
-
-  #breathe .section-label { color: var(--terracotta-light); }
-  #breathe .section-title { color: #fff; }
-  #breathe .section-intro { color: rgba(255,255,255,0.7); margin: 0 auto 56px; }
-
-  .breathing-circle-wrap {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 32px;
-  }
-
-  .breathing-circle {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    background: radial-gradient(circle at 35% 35%, rgba(196,113,79,0.5), rgba(45,125,111,0.3));
-    border: 3px solid rgba(255,255,255,0.2);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: transform 4s ease-in-out;
-    cursor: pointer;
-    position: relative;
-  }
-
-  .breathing-circle::after {
-    content: '';
-    position: absolute;
-    inset: -12px;
-    border-radius: 50%;
-    border: 1px solid rgba(255,255,255,0.15);
-    transition: transform 4s ease-in-out;
-  }
-
-  .breathing-circle.inhale {
-    transform: scale(1.5);
-  }
-
-  .breathing-circle.inhale::after {
-    transform: scale(1.1);
-  }
-
-  .breathing-circle.exhale {
-    transform: scale(1);
-  }
-
-  .breath-text {
-    font-family: 'Lora', serif;
-    font-size: 18px;
-    color: rgba(255,255,255,0.9);
-    font-style: italic;
-    min-height: 28px;
-  }
-
-  .breath-count {
-    font-size: 48px;
-    font-weight: 300;
-    color: rgba(255,255,255,0.6);
-    min-height: 60px;
-  }
-
-  .breath-btn {
-    padding: 14px 40px;
-    background: var(--terracotta);
-    color: #fff;
-    border: none;
-    border-radius: 50px;
-    font-size: 15px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s;
-    font-family: 'DM Sans', sans-serif;
-  }
-
-  .breath-btn:hover {
-    background: #d4825f;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(196,113,79,0.4);
-  }
-
-  /* ── WEEKLY PLAN ── */
-  #plan { background: var(--cream); }
-
-  .weeks-timeline {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-    position: relative;
-  }
-
-  .weeks-timeline::before {
-    content: '';
-    position: absolute;
-    left: 28px;
-    top: 20px;
-    bottom: 20px;
-    width: 2px;
-    background: linear-gradient(to bottom, var(--terracotta), var(--teal), var(--indigo));
-  }
-
-  .week-row {
-    display: flex;
-    gap: 32px;
-    padding-bottom: 40px;
-    cursor: pointer;
-  }
-
-  .week-dot {
-    width: 58px;
-    height: 58px;
-    border-radius: 50%;
-    background: #fff;
-    border: 3px solid var(--accent, var(--terracotta));
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Lora', serif;
-    font-weight: 700;
-    font-size: 13px;
-    color: var(--accent, var(--terracotta));
-    flex-shrink: 0;
-    z-index: 1;
-    transition: all 0.3s;
-  }
-
-  .week-row:hover .week-dot,
-  .week-row.open .week-dot {
-    background: var(--accent, var(--terracotta));
-    color: #fff;
-    transform: scale(1.1);
-  }
-
-  .week-body {
-    flex: 1;
-    padding-top: 10px;
-  }
-
-  .week-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-    margin-bottom: 12px;
-  }
-
-  .week-title {
-    font-family: 'Lora', serif;
-    font-size: 20px;
-    font-weight: 700;
-    color: var(--text-dark);
-  }
-
-  .week-theme {
-    font-size: 12px;
-    font-weight: 600;
-    padding: 4px 12px;
-    border-radius: 20px;
-    background: var(--accent-pale, var(--terracotta-pale));
-    color: var(--accent, var(--terracotta));
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-  }
-
-  .week-chevron {
-    transition: transform 0.3s;
-    color: var(--text-soft);
-    font-size: 20px;
-  }
-
-  .week-row.open .week-chevron {
-    transform: rotate(180deg);
-  }
-
-  .week-tasks {
-    display: none;
-    padding: 20px;
-    background: #fff;
-    border-radius: 16px;
-    border: 1px solid var(--border);
-  }
-
-  .week-row.open .week-tasks {
-    display: block;
-    animation: slideIn 0.3s ease;
-  }
-
-  .week-task {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    padding: 12px 0;
-    border-bottom: 1px solid var(--border);
-    font-size: 14px;
-    color: var(--text-mid);
-  }
-
-  .week-task:last-child { border-bottom: none; }
-
-  .task-check {
-    width: 22px;
-    height: 22px;
-    border: 2px solid var(--accent, var(--terracotta));
-    border-radius: 6px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    flex-shrink: 0;
-    transition: all 0.2s;
-    margin-top: 1px;
-  }
-
-  .task-check.checked {
-    background: var(--accent, var(--terracotta));
-  }
-
-  .task-check.checked::after {
-    content: '✓';
-    color: #fff;
-    font-size: 13px;
-    font-weight: 700;
-  }
-
-  /* ── HELPLINES ── */
-  #help { background: var(--warm-white); }
-
-  .helplines-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
-  }
-
-  .helpline-card {
-    background: #fff;
-    border-radius: 20px;
-    padding: 28px;
-    border: 1.5px solid var(--border);
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    transition: all 0.3s;
-  }
-
-  .helpline-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 12px 32px rgba(0,0,0,0.08);
-    border-color: var(--accent, var(--teal));
-  }
-
-  .helpline-icon { font-size: 32px; }
-
-  .helpline-card h3 {
-    font-family: 'Lora', serif;
-    font-size: 18px;
-    font-weight: 700;
-    color: var(--text-dark);
-  }
-
-  .helpline-card p {
-    font-size: 13px;
-    color: var(--text-soft);
-    line-height: 1.6;
-  }
-
-  .helpline-number {
-    font-size: 22px;
-    font-weight: 700;
-    color: var(--accent, var(--teal));
-    font-family: 'Lora', serif;
-    letter-spacing: 0.02em;
-  }
-
-  .helpline-cta {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 10px 20px;
-    background: var(--accent-pale, var(--teal-pale));
-    color: var(--accent, var(--teal));
-    border-radius: 50px;
-    font-size: 13px;
-    font-weight: 600;
-    text-decoration: none;
-    transition: all 0.2s;
-    width: fit-content;
-  }
-
-  .helpline-cta:hover {
-    background: var(--accent, var(--teal));
-    color: #fff;
-  }
-
-  /* ── AFFIRMATIONS ── */
-  #affirm {
-    background: var(--terracotta-pale);
-    text-align: center;
-  }
-
-  .affirmation-box {
-    max-width: 640px;
-    margin: 0 auto;
-  }
-
-  .quote-display {
-    font-family: 'Lora', serif;
-    font-size: clamp(20px, 3vw, 30px);
-    font-weight: 400;
-    font-style: italic;
-    color: var(--text-dark);
-    line-height: 1.6;
-    padding: 48px;
-    background: #fff;
-    border-radius: 24px;
-    border: 1.5px solid var(--border);
-    margin-bottom: 24px;
-    min-height: 160px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.4s;
-  }
-
-  .quote-btn {
-    padding: 14px 32px;
-    background: var(--terracotta);
-    color: #fff;
-    border: none;
-    border-radius: 50px;
-    font-size: 15px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s;
-    font-family: 'DM Sans', sans-serif;
-  }
-
-  .quote-btn:hover {
-    background: #b56040;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(196,113,79,0.35);
-  }
-
-  /* ── FOOTER ── */
-  footer {
-    background: var(--text-dark);
-    color: rgba(255,255,255,0.6);
-    text-align: center;
-    padding: 48px 24px;
-    font-size: 14px;
-    line-height: 2;
-  }
-
-  footer p { max-width: 500px; margin: 0 auto; }
-  footer strong { color: rgba(255,255,255,0.9); }
-
-  /* ── RESPONSIVE ── */
-  @media (max-width: 640px) {
-    section { padding: 60px 20px; }
-    .guide-panel { padding: 28px 20px; }
-    .weeks-timeline::before { left: 24px; }
-    .week-dot { width: 50px; height: 50px; }
-    .helplines-grid { grid-template-columns: 1fr; }
-    nav .nav-links { display: none; }
-  }
-
-  /* ── SCROLL ANIMATIONS ── */
-  .reveal {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.7s ease, transform 0.7s ease;
-  }
-
-  .reveal.visible {
-    opacity: 1;
-    transform: none;
-  }
-
-  .feeling-card { --accent: #2D7D6F; --accent-pale: #EBF5F3; }
-  .feeling-card[data-feeling="guilt"] { --accent: #B5862A; --accent-pale: #FFF8E7; }
-  .feeling-card[data-feeling="anger"] { --accent: #C4714F; --accent-pale: #FBF0EA; }
-  .feeling-card[data-feeling="numbness"] { --accent: #3D4F7C; --accent-pale: #EEF0F8; }
-  .feeling-card[data-feeling="sadness"] { --accent: #5C7A5F; --accent-pale: #EDF3ED; }
-  .feeling-card[data-feeling="anxiety"] { --accent: #9B4D6A; --accent-pale: #F9EDF2; }
-  .feeling-card[data-feeling="whyquestions"] { --accent: #5C4D44; --accent-pale: #F3EDE8; }
-  .feeling-card[data-feeling="isolation"] { --accent: #2D7D6F; --accent-pale: #EBF5F3; }
+:root {
+  --bg:#030609;--surface:#080e18;--card:#0c1420;--border:#112035;--border2:#1a3050;
+  --accent:#00e5ff;--accent2:#ff6b00;--accent3:#39ff14;
+  --text:#c8dff0;--muted:#3a5570;--dim:#1e3a55;
+  --mono:'IBM Plex Mono',monospace;--sans:'Manrope',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);overflow-x:hidden;line-height:1.6;}
+body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(0,229,255,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(0,229,255,0.025) 1px,transparent 1px);background-size:48px 48px;pointer-events:none;z-index:0;}
+.orb{position:fixed;border-radius:50%;filter:blur(120px);pointer-events:none;z-index:0;opacity:0.12;}
+.orb1{width:600px;height:600px;background:var(--accent);top:-200px;left:-100px;}
+.orb2{width:500px;height:500px;background:var(--accent2);bottom:0;right:-150px;}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:16px 40px;background:rgba(3,6,9,0.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);}
+.nav-logo{font-family:var(--mono);font-size:0.9rem;font-weight:600;color:var(--accent);letter-spacing:0.05em;}
+.nav-logo span{color:var(--muted);}
+.nav-links{display:flex;gap:28px;list-style:none;}
+.nav-links a{font-family:var(--mono);font-size:0.72rem;color:var(--muted);text-decoration:none;text-transform:uppercase;letter-spacing:0.1em;transition:color 0.2s;}
+.nav-links a:hover{color:var(--accent);}
+
+main{position:relative;z-index:1;}
+section{padding:100px 40px;max-width:1100px;margin:0 auto;}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding-top:140px;padding-bottom:80px;}
+.hero-tag{font-family:var(--mono);font-size:0.72rem;color:var(--accent);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:20px;opacity:0;animation:fadeUp 0.6s 0.1s forwards;}
+.hero h1{font-size:clamp(3rem,8vw,6rem);font-weight:800;line-height:0.95;letter-spacing:-0.03em;margin-bottom:24px;opacity:0;animation:fadeUp 0.7s 0.2s forwards;}
+.hero h1 em{font-style:normal;color:var(--accent);display:block;}
+.hero-desc{max-width:560px;font-size:1rem;color:var(--muted);line-height:1.7;margin-bottom:36px;opacity:0;animation:fadeUp 0.7s 0.35s forwards;}
+.hero-desc strong{color:var(--text);}
+.hero-pills{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:44px;opacity:0;animation:fadeUp 0.7s 0.45s forwards;}
+.pill{font-family:var(--mono);font-size:0.67rem;padding:4px 12px;border-radius:2px;letter-spacing:0.08em;text-transform:uppercase;border:1px solid;}
+.pill-blue{border-color:rgba(0,229,255,0.3);color:var(--accent);background:rgba(0,229,255,0.06);}
+.pill-orange{border-color:rgba(255,107,0,0.3);color:var(--accent2);background:rgba(255,107,0,0.06);}
+.pill-green{border-color:rgba(57,255,20,0.3);color:var(--accent3);background:rgba(57,255,20,0.06);}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap;opacity:0;animation:fadeUp 0.7s 0.55s forwards;}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;font-family:var(--mono);font-size:0.75rem;letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;border-radius:3px;transition:all 0.2s;cursor:pointer;}
+.btn-primary{background:var(--accent);color:#000;font-weight:700;}
+.btn-primary:hover{background:#33eeff;transform:translateY(-1px);}
+.btn-outline{border:1px solid var(--border2);color:var(--text);}
+.btn-outline:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-1px);}
+
+/* STATS */
+.stats-wrap{max-width:1100px;margin:0 auto;padding:0 40px;}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);border-radius:6px;overflow:hidden;opacity:0;animation:fadeUp 0.7s 0.65s forwards;}
+.stat{background:var(--surface);padding:24px 20px;text-align:center;}
+.stat-num{font-family:var(--mono);font-size:2rem;font-weight:700;color:var(--accent);display:block;line-height:1;margin-bottom:6px;}
+.stat-label{font-size:0.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;}
+
+/* SECTION */
+.section-tag{font-family:var(--mono);font-size:0.68rem;color:var(--accent);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:10px;}
+.section-tag::after{content:'';flex:1;max-width:60px;height:1px;background:var(--accent);opacity:0.4;}
+.section-title{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;letter-spacing:-0.02em;margin-bottom:14px;}
+.section-sub{color:var(--muted);font-size:0.9rem;max-width:480px;margin-bottom:50px;}
+
+/* SKILLS */
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:12px;}
+.skill-card{background:var(--card);border:1px solid var(--border);border-radius:6px;padding:20px 22px;transition:border-color 0.2s,transform 0.2s;}
+.skill-card:hover{border-color:var(--border2);transform:translateY(-2px);}
+.skill-header{display:flex;align-items:center;gap:12px;margin-bottom:14px;}
+.skill-icon{font-size:1.2rem;}
+.skill-name{font-weight:600;font-size:0.9rem;}
+.skill-tags{display:flex;flex-wrap:wrap;gap:5px;}
+.stag{font-family:var(--mono);font-size:0.61rem;padding:2px 8px;border-radius:2px;background:rgba(255,255,255,0.04);border:1px solid var(--border2);color:var(--muted);}
+
+/* PROJECTS */
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:14px;}
+.proj-card{background:var(--card);border:1px solid var(--border);border-radius:8px;overflow:hidden;transition:border-color 0.2s,transform 0.2s;display:flex;flex-direction:column;}
+.proj-card:hover{border-color:var(--accent);transform:translateY(-2px);}
+.proj-card.featured{grid-column:span 2;}
+.proj-top{padding:22px 22px 0;display:flex;align-items:flex-start;justify-content:space-between;gap:12px;}
+.proj-icon{font-size:1.6rem;}
+.proj-status{font-family:var(--mono);font-size:0.6rem;padding:3px 8px;border-radius:2px;text-transform:uppercase;letter-spacing:0.08em;}
+.status-done{background:rgba(57,255,20,0.1);color:var(--accent3);border:1px solid rgba(57,255,20,0.2);}
+.status-wip{background:rgba(255,107,0,0.1);color:var(--accent2);border:1px solid rgba(255,107,0,0.2);}
+.proj-body{padding:14px 22px 20px;flex:1;}
+.proj-title{font-size:1rem;font-weight:700;margin-bottom:8px;}
+.proj-desc{font-size:0.8rem;color:var(--muted);line-height:1.65;margin-bottom:16px;}
+.proj-tags{display:flex;flex-wrap:wrap;gap:5px;}
+.ptag{font-family:var(--mono);font-size:0.6rem;padding:3px 8px;border-radius:2px;border:1px solid;}
+.ptag-blue{border-color:rgba(0,229,255,0.25);color:rgba(0,229,255,0.7);}
+.ptag-orange{border-color:rgba(255,107,0,0.25);color:rgba(255,107,0,0.7);}
+.ptag-green{border-color:rgba(57,255,20,0.25);color:rgba(57,255,20,0.7);}
+.ptag-gray{border-color:var(--border2);color:var(--muted);}
+.proj-footer{padding:14px 22px;border-top:1px solid var(--border);display:flex;align-items:center;gap:10px;}
+.proj-link{font-family:var(--mono);font-size:0.65rem;color:var(--accent);text-decoration:none;letter-spacing:0.06em;text-transform:uppercase;transition:opacity 0.2s;}
+.proj-link:hover{opacity:0.7;}
+.proj-link+.proj-link{color:var(--muted);}
+
+/* TIMELINE */
+.timeline{position:relative;padding-left:28px;}
+.timeline::before{content:'';position:absolute;left:0;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,var(--accent),transparent);}
+.titem{position:relative;margin-bottom:36px;}
+.titem::before{content:'';position:absolute;left:-33px;top:6px;width:10px;height:10px;border-radius:50%;background:var(--accent);box-shadow:0 0 12px var(--accent);}
+.titem-meta{font-family:var(--mono);font-size:0.65rem;color:var(--muted);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:6px;}
+.titem-title{font-size:1rem;font-weight:700;margin-bottom:6px;}
+.titem-desc{font-size:0.82rem;color:var(--muted);line-height:1.65;margin-bottom:10px;}
+.titem-pills{display:flex;flex-wrap:wrap;gap:5px;}
+.tp{font-family:var(--mono);font-size:0.6rem;padding:2px 8px;border-radius:2px;background:rgba(0,229,255,0.06);border:1px solid rgba(0,229,255,0.15);color:rgba(0,229,255,0.6);}
+
+/* CERTS */
+.certs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;}
+.cert-card{background:var(--card);border:1px solid var(--border);border-radius:6px;padding:18px 20px;display:flex;gap:14px;align-items:flex-start;transition:border-color 0.2s;}
+.cert-card:hover{border-color:var(--border2);}
+.cert-icon{font-size:1.4rem;flex-shrink:0;margin-top:2px;}
+.cert-title{font-size:0.85rem;font-weight:600;margin-bottom:4px;}
+.cert-body{font-size:0.75rem;color:var(--muted);line-height:1.5;}
+.cert-status{display:inline-block;font-family:var(--mono);font-size:0.58rem;padding:2px 6px;border-radius:2px;margin-top:8px;text-transform:uppercase;letter-spacing:0.06em;}
+.cs-active{background:rgba(57,255,20,0.1);color:var(--accent3);}
+.cs-done{background:rgba(0,229,255,0.1);color:var(--accent);}
+.cs-planned{background:rgba(255,107,0,0.1);color:var(--accent2);}
+
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.contact-card{background:var(--card);border:1px solid var(--border);border-radius:6px;padding:22px;text-decoration:none;display:flex;align-items:center;gap:16px;transition:all 0.2s;}
+.contact-card:hover{border-color:var(--accent);transform:translateY(-2px);}
+.contact-icon{font-size:1.4rem;flex-shrink:0;}
+.contact-label{font-size:0.72rem;color:var(--muted);margin-bottom:2px;font-family:var(--mono);text-transform:uppercase;letter-spacing:0.08em;}
+.contact-value{font-size:0.88rem;font-weight:600;color:var(--text);}
+
+footer{border-top:1px solid var(--border);padding:32px 40px;text-align:center;font-family:var(--mono);font-size:0.65rem;color:var(--muted);position:relative;z-index:1;}
+footer span{color:var(--accent);}
+
+.divider{height:1px;background:linear-gradient(to right,transparent,var(--border),transparent);margin:0 40px;}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity 0.6s ease,transform 0.6s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+@media(max-width:768px){
+  nav{padding:14px 20px;}.nav-links{display:none;}
+  section{padding:80px 20px;}
+  .proj-card.featured{grid-column:span 1;}
+  .contact-grid{grid-template-columns:1fr;}
+  .hero h1{font-size:2.8rem;}
+  .stats-wrap{padding:0 20px;}
+  footer{padding:24px 20px;}
+  .divider{margin:0 20px;}
+}
 </style>
 </head>
 <body>
 
-<!-- HERO -->
-<div class="hero">
-  <div class="hero-stars" id="stars"></div>
-  <div class="hero-content">
-    <div class="hero-eyebrow">A gentle guide for healing</div>
-    <h1>You Are Not <em>Alone</em><br>in This Pain</h1>
-    <p class="hero-sub">Losing someone you loved to suicide is one of the heaviest things a person can carry. This page is here for you — whenever you need it, at any hour.</p>
-    <a href="#feelings" class="hero-cta">Start Here — How Are You Feeling? →</a>
-  </div>
-  <div class="scroll-hint">scroll</div>
-</div>
+<div class="orb orb1"></div>
+<div class="orb orb2"></div>
 
-<!-- NAV -->
 <nav>
-  <div class="nav-inner">
-    <a href="#" class="nav-logo">💙 You Are Not Alone</a>
-    <div class="nav-links">
-      <a href="#feelings">Feelings</a>
-      <a href="#breathe">Breathe</a>
-      <a href="#videos">Guides</a>
-      <a href="#plan">12-Week Plan</a>
-      <a href="#help">Helplines</a>
-      <a href="#affirm">Affirmations</a>
-    </div>
-  </div>
+  <div class="nav-logo">ash<span>@homelab</span>:~$</div>
+  <ul class="nav-links">
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#labs">Labs</a></li>
+    <li><a href="#learning">Credentials</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
 </nav>
 
-<!-- FEELINGS SECTION -->
-<section id="feelings">
-  <div class="container">
-    <div class="reveal">
-      <div class="section-label">Step 1 — Identify what you feel</div>
-      <h2 class="section-title">What are you feeling<br>right now?</h2>
-      <p class="section-intro">Click on whatever matches what you are going through. There is no wrong answer. A personalised guide will appear below.</p>
-    </div>
+<main>
 
-    <div class="feelings-grid reveal">
-      <div class="feeling-card" data-feeling="sadness" onclick="showGuide('sadness')">
-        <span class="feeling-icon">😢</span>
-        <h3>Deep Sadness</h3>
-        <p>An overwhelming wave of grief that does not seem to lift. Missing her constantly.</p>
-        <span class="feeling-tag">→ Read guide</span>
-      </div>
-      <div class="feeling-card" data-feeling="guilt" onclick="showGuide('guilt')">
-        <span class="feeling-icon">💭</span>
-        <h3>Guilt & "What If"</h3>
-        <p>Replaying moments. Thinking you should have done something different.</p>
-        <span class="feeling-tag">→ Read guide</span>
-      </div>
-      <div class="feeling-card" data-feeling="anger" onclick="showGuide('anger')">
-        <span class="feeling-icon">🔥</span>
-        <h3>Anger</h3>
-        <p>Feeling furious — at her, at yourself, at the world. It makes no sense and yet it burns.</p>
-        <span class="feeling-tag">→ Read guide</span>
-      </div>
-      <div class="feeling-card" data-feeling="numbness" onclick="showGuide('numbness')">
-        <span class="feeling-icon">🌫️</span>
-        <h3>Numbness</h3>
-        <p>Feeling nothing at all — like you are watching your own life from a distance.</p>
-        <span class="feeling-tag">→ Read guide</span>
-      </div>
-      <div class="feeling-card" data-feeling="anxiety" onclick="showGuide('anxiety')">
-        <span class="feeling-icon">💓</span>
-        <h3>Anxiety & Panic</h3>
-        <p>Heart racing. Tight chest. Feeling like something terrible is about to happen again.</p>
-        <span class="feeling-tag">→ Read guide</span>
-      </div>
-      <div class="feeling-card" data-feeling="whyquestions" onclick="showGuide('whyquestions')">
-        <span class="feeling-icon">❓</span>
-        <h3>Unanswerable "Why"</h3>
-        <p>The desperate need to understand why she did it. Searching for an answer that isn't there.</p>
-        <span class="feeling-tag">→ Read guide</span>
-      </div>
-      <div class="feeling-card" data-feeling="isolation" onclick="showGuide('isolation')">
-        <span class="feeling-icon">🌑</span>
-        <h3>Isolation & Loneliness</h3>
-        <p>Feeling like no one can truly understand what you are going through.</p>
-        <span class="feeling-tag">→ Read guide</span>
-      </div>
-      <div class="feeling-card" data-feeling="cantfunction" onclick="showGuide('cantfunction')">
-        <span class="feeling-icon">🛏️</span>
-        <h3>Can't Function</h3>
-        <p>Can't eat. Can't sleep. Can't get out of bed. Everything feels impossible.</p>
-        <span class="feeling-tag">→ Read guide</span>
-      </div>
-    </div>
-
-    <!-- GUIDE PANEL -->
-    <div class="guide-panel" id="guide-panel">
-      <div class="guide-panel-header">
-        <span class="guide-panel-icon" id="guide-icon"></span>
-        <div>
-          <h2 id="guide-title"></h2>
-          <p id="guide-subtitle"></p>
-        </div>
-      </div>
-      <ul class="steps-list" id="guide-steps"></ul>
-      <div id="guide-reminder" style="padding:20px;background:var(--teal-pale);border-radius:16px;font-size:14px;color:var(--text-mid);line-height:1.7;border-left:4px solid var(--teal);"></div>
-    </div>
-  </div>
-</section>
-
-<!-- BREATHING SECTION -->
-<section id="breathe">
-  <div class="container">
-    <div class="reveal">
-      <div class="section-label">Instant calm</div>
-      <h2 class="section-title">Breathe With Me</h2>
-      <p class="section-intro">When panic or grief overwhelms you, this simple breathing exercise signals your nervous system to calm down. Try it for just 2 minutes.</p>
-    </div>
-    <div class="breathing-circle-wrap reveal">
-      <div class="breathing-circle" id="breath-circle">
-        <div style="font-size:36px">🫁</div>
-      </div>
-      <div class="breath-count" id="breath-count">—</div>
-      <div class="breath-text" id="breath-text">Press start when ready</div>
-      <button class="breath-btn" id="breath-btn" onclick="toggleBreath()">Start Breathing Exercise</button>
-    </div>
-  </div>
-</section>
-
-<!-- VIDEO GUIDES -->
-<section id="videos" style="background:var(--cream)">
-  <div class="container">
-    <div class="reveal">
-      <div class="section-label">Watch & listen</div>
-      <h2 class="section-title">Video Guides & Talks</h2>
-      <p class="section-intro">These are real, gentle videos from grief counsellors, psychologists, and survivors. Watch at your own pace.</p>
-    </div>
-    <div class="video-grid reveal">
-
-      <div class="video-card">
-        <div class="video-thumb">
-          <iframe src="https://www.youtube.com/embed/rQKmQq3bFXM" title="Understanding Grief" allowfullscreen loading="lazy"></iframe>
-        </div>
-        <div class="video-info">
-          <div class="video-tag">Understanding Grief</div>
-          <h4>What Grief Actually Does to Your Brain</h4>
-          <p>A gentle explanation of why grief feels so physically and mentally overwhelming.</p>
-        </div>
-      </div>
-
-      <div class="video-card">
-        <div class="video-thumb">
-          <iframe src="https://www.youtube.com/embed/khkXBiBQ_s0" title="Survivor Story" allowfullscreen loading="lazy"></iframe>
-        </div>
-        <div class="video-info">
-          <div class="video-tag">Survivor Story</div>
-          <h4>The Space Between — Living After Loss</h4>
-          <p>A powerful, honest talk by someone who lost a loved one to suicide.</p>
-        </div>
-      </div>
-
-      <div class="video-card">
-        <div class="video-thumb">
-          <iframe src="https://www.youtube.com/embed/YFQqFoElznI" title="Managing Anxiety" allowfullscreen loading="lazy"></iframe>
-        </div>
-        <div class="video-info">
-          <div class="video-tag">Anxiety Relief</div>
-          <h4>5 Minute Calming Technique for Grief Anxiety</h4>
-          <p>A simple, guided technique you can use anywhere, anytime.</p>
-        </div>
-      </div>
-
-      <div class="video-card">
-        <div class="video-thumb">
-          <iframe src="https://www.youtube.com/embed/Tia0PFvXCqA" title="Suicide Bereavement" allowfullscreen loading="lazy"></iframe>
-        </div>
-        <div class="video-info">
-          <div class="video-tag">Suicide Bereavement</div>
-          <h4>It Was Not Your Fault — A Message for Survivors</h4>
-          <p>For those carrying guilt after losing someone to suicide.</p>
-        </div>
-      </div>
-
-      <div class="video-card">
-        <div class="video-thumb">
-          <iframe src="https://www.youtube.com/embed/h5LQrjUqAxs" title="Sleep & Grief" allowfullscreen loading="lazy"></iframe>
-        </div>
-        <div class="video-info">
-          <div class="video-tag">Rest & Recovery</div>
-          <h4>Why You Can't Sleep — Grief and Rest</h4>
-          <p>Understanding why grief disrupts sleep and what you can gently do about it.</p>
-        </div>
-      </div>
-
-      <div class="video-card">
-        <div class="video-thumb">
-          <iframe src="https://www.youtube.com/embed/0JQLzsOmFdY" title="Guided Meditation for Grief" allowfullscreen loading="lazy"></iframe>
-        </div>
-        <div class="video-info">
-          <div class="video-tag">Guided Meditation</div>
-          <h4>10-Minute Meditation for Grief and Loss</h4>
-          <p>A calming meditation specifically designed for those in bereavement.</p>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- 12-WEEK PLAN -->
-<section id="plan">
-  <div class="container">
-    <div class="reveal">
-      <div class="section-label">Your roadmap</div>
-      <h2 class="section-title">A 12-Week Gentle Plan</h2>
-      <p class="section-intro">There is no deadline on grief. This is a loose guide — not a strict schedule. Tick off tasks as you feel ready. Click each week to expand it.</p>
-    </div>
-    <div class="weeks-timeline reveal" id="weeks-container"></div>
-  </div>
-</section>
-
-<!-- HELPLINES — INDIA -->
-<section id="help">
-  <div class="container">
-    <div class="reveal">
-      <div class="section-label">India helplines</div>
-      <h2 class="section-title">Talk to Someone,<br>Right Now</h2>
-      <p class="section-intro">You do not have to carry this alone. These are real people who will listen without judgement — free of charge.</p>
-    </div>
-    <div class="helplines-grid reveal">
-
-      <div class="helpline-card" style="--accent:#C4714F;--accent-pale:#FBF0EA;">
-        <span class="helpline-icon">📞</span>
-        <h3>iCall — Tata Institute</h3>
-        <p>Psychological counselling by trained professionals. Free, confidential, available in Hindi and English.</p>
-        <div class="helpline-number">9152987821</div>
-        <a href="tel:9152987821" class="helpline-cta" style="--accent:#C4714F;--accent-pale:#FBF0EA;background:#FBF0EA;color:#C4714F;">📞 Call Now</a>
-      </div>
-
-      <div class="helpline-card" style="--accent:#2D7D6F;--accent-pale:#EBF5F3;">
-        <span class="helpline-icon">🤝</span>
-        <h3>Vandrevala Foundation</h3>
-        <p>24/7 mental health helpline. Free call, available in multiple Indian languages including Hindi.</p>
-        <div class="helpline-number">1860-2662-345</div>
-        <a href="tel:18602662345" class="helpline-cta" style="background:#EBF5F3;color:#2D7D6F;">📞 Call Now</a>
-      </div>
-
-      <div class="helpline-card" style="--accent:#3D4F7C;--accent-pale:#EEF0F8;">
-        <span class="helpline-icon">💬</span>
-        <h3>AASRA</h3>
-        <p>India's leading suicide prevention helpline. Available 24/7. Completely confidential. Delhi-accessible.</p>
-        <div class="helpline-number">9820466627</div>
-        <a href="tel:9820466627" class="helpline-cta" style="background:#EEF0F8;color:#3D4F7C;">📞 Call Now</a>
-      </div>
-
-      <div class="helpline-card" style="--accent:#5C7A5F;--accent-pale:#EDF3ED;">
-        <span class="helpline-icon">🏥</span>
-        <h3>NIMHANS Delhi Outreach</h3>
-        <p>National mental health resources. Can guide you to local psychiatrists and counsellors in Delhi.</p>
-        <div class="helpline-number">080-46110007</div>
-        <a href="tel:08046110007" class="helpline-cta" style="background:#EDF3ED;color:#5C7A5F;">📞 Call Now</a>
-      </div>
-
-      <div class="helpline-card" style="--accent:#B5862A;--accent-pale:#FFF8E7;">
-        <span class="helpline-icon">🌙</span>
-        <h3>Snehi Foundation</h3>
-        <p>Emotional support and counselling for grief, loss, and mental health. Available evenings and nights.</p>
-        <div class="helpline-number">044-24640050</div>
-        <a href="tel:04424640050" class="helpline-cta" style="background:#FFF8E7;color:#B5862A;">📞 Call Now</a>
-      </div>
-
-      <div class="helpline-card" style="--accent:#9B4D6A;--accent-pale:#F9EDF2;">
-        <span class="helpline-icon">🆘</span>
-        <h3>National Helpline</h3>
-        <p>India's national mental health helpline. Free, government-operated, available in Hindi and English.</p>
-        <div class="helpline-number">KIRAN: 1800-599-0019</div>
-        <a href="tel:18005990019" class="helpline-cta" style="background:#F9EDF2;color:#9B4D6A;">📞 Call Now</a>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- AFFIRMATIONS -->
-<section id="affirm">
-  <div class="container">
-    <div class="reveal">
-      <div class="section-label">Words for hard moments</div>
-      <h2 class="section-title">A Gentle Reminder</h2>
-      <p class="section-intro" style="margin:0 auto 40px;">Press the button when you need a word of comfort.</p>
-    </div>
-    <div class="affirmation-box reveal">
-      <div class="quote-display" id="quote-display">
-        "You are allowed to grieve. You are allowed to feel everything."
-      </div>
-      <button class="quote-btn" onclick="nextQuote()">Next reminder →</button>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <p>
-    <strong>Made with love</strong> — for someone who is grieving and deserves support.<br>
-    This website does not replace professional help. If you are in crisis, please call a helpline above.<br><br>
-    <strong>KIRAN (India):</strong> 1800-599-0019 &nbsp;|&nbsp; <strong>AASRA:</strong> 9820466627 &nbsp;|&nbsp; <strong>iCall:</strong> 9152987821
+<!-- HERO -->
+<section class="hero" id="home">
+  <p class="hero-tag">// IT Professional & Cybersecurity Specialist · UK</p>
+  <h1>Building Secure<br><em>Enterprise Infrastructure</em></h1>
+  <p class="hero-desc">
+    UK-based IT professional with an <strong>MSc in Cybersecurity</strong> and <strong>CCNA</strong>. I design and operate production-grade lab environments, build AI-assisted security tools, and pursue deep hands-on expertise across the full enterprise IT and networking stack.
   </p>
+  <div class="hero-pills">
+    <span class="pill pill-blue">Proxmox Homelab</span>
+    <span class="pill pill-blue">Active Directory</span>
+    <span class="pill pill-blue">pfSense</span>
+    <span class="pill pill-blue">CCNA Certified</span>
+    <span class="pill pill-blue">EVE-NG / Cisco</span>
+    <span class="pill pill-orange">SOC Analysis</span>
+    <span class="pill pill-orange">Digital Forensics</span>
+    <span class="pill pill-orange">Wazuh SIEM</span>
+    <span class="pill pill-green">Docker</span>
+    <span class="pill pill-green">Ollama / Local LLM</span>
+    <span class="pill pill-green">Python Automation</span>
+    <span class="pill pill-green">Post-Quantum Crypto</span>
+  </div>
+  <div class="hero-cta">
+    <a href="#projects" class="btn btn-primary">View Projects</a>
+    <a href="#contact" class="btn btn-outline">Get In Touch</a>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-wrap">
+  <div class="stats reveal">
+    <div class="stat"><span class="stat-num">6+</span><span class="stat-label">Lab VMs</span></div>
+    <div class="stat"><span class="stat-num">CCNA</span><span class="stat-label">Cisco Certified</span></div>
+    <div class="stat"><span class="stat-num">MSc</span><span class="stat-label">Cybersecurity</span></div>
+    <div class="stat"><span class="stat-num">8+</span><span class="stat-label">Network Labs</span></div>
+    <div class="stat"><span class="stat-num">AI</span><span class="stat-label">Local LLM Pipeline</span></div>
+    <div class="stat"><span class="stat-num">3</span><span class="stat-label">Virtual Networks</span></div>
+  </div>
+</div>
+
+<div class="divider" style="margin-top:60px;"></div>
+
+<!-- SKILLS -->
+<section id="skills">
+  <p class="section-tag reveal">// Technical Skills</p>
+  <h2 class="section-title reveal">What I Work With</h2>
+  <p class="section-sub reveal">Hands-on experience across the full enterprise IT stack — working configurations in real lab environments, not just theory.</p>
+
+  <div class="skills-grid">
+
+    <div class="skill-card reveal">
+      <div class="skill-header"><span class="skill-icon">🌐</span><span class="skill-name">Enterprise Networking (CCNA)</span></div>
+      <div class="skill-tags">
+        <span class="stag">VLANs (802.1Q)</span><span class="stag">Trunking</span><span class="stag">OSPF</span>
+        <span class="stag">HSRP/VRRP</span><span class="stag">Inter-VLAN Routing</span><span class="stag">NAT/PAT</span>
+        <span class="stag">IPsec VPN</span><span class="stag">Cisco IOS</span><span class="stag">ACLs</span>
+        <span class="stag">Subnetting</span><span class="stag">EVE-NG</span><span class="stag">pfSense</span>
+      </div>
+    </div>
+
+    <div class="skill-card reveal">
+      <div class="skill-header"><span class="skill-icon">🖥️</span><span class="skill-name">Virtualisation & Hypervisors</span></div>
+      <div class="skill-tags">
+        <span class="stag">Proxmox VE 8</span><span class="stag">KVM/QEMU</span><span class="stag">LXC Containers</span>
+        <span class="stag">EVE-NG</span><span class="stag">Cloud-Init</span><span class="stag">VirtIO Drivers</span>
+        <span class="stag">VM Snapshots</span><span class="stag">NBD Disk Mount</span>
+      </div>
+    </div>
+
+    <div class="skill-card reveal">
+      <div class="skill-header"><span class="skill-icon">🪟</span><span class="skill-name">Windows Server & Active Directory</span></div>
+      <div class="skill-tags">
+        <span class="stag">AD DS</span><span class="stag">DNS</span><span class="stag">DHCP</span>
+        <span class="stag">Group Policy (GPO)</span><span class="stag">OUs & Security Groups</span>
+        <span class="stag">PKI / AD CS</span><span class="stag">File Server (SMB)</span>
+        <span class="stag">PowerShell</span><span class="stag">RDP</span><span class="stag">Domain Join</span>
+      </div>
+    </div>
+
+    <div class="skill-card reveal">
+      <div class="skill-header"><span class="skill-icon">🛡️</span><span class="skill-name">Cybersecurity & SOC</span></div>
+      <div class="skill-tags">
+        <span class="stag">Wazuh SIEM</span><span class="stag">Digital Forensics</span><span class="stag">tshark / Wireshark</span>
+        <span class="stag">Disk Imaging (dd/dc3dd)</span><span class="stag">Autopsy / Sleuth Kit</span>
+        <span class="stag">Mobile Forensics (ADB)</span><span class="stag">Log Analysis</span>
+        <span class="stag">Blue Team</span><span class="stag">IOC Extraction</span>
+      </div>
+    </div>
+
+    <div class="skill-card reveal">
+      <div class="skill-header"><span class="skill-icon">🐳</span><span class="skill-name">Containers & Services</span></div>
+      <div class="skill-tags">
+        <span class="stag">Docker</span><span class="stag">Docker Compose</span><span class="stag">FastAPI</span>
+        <span class="stag">WordPress + MySQL</span><span class="stag">Apache2</span><span class="stag">Redis</span>
+        <span class="stag">ChromaDB</span><span class="stag">WebSockets</span><span class="stag">Microservices</span>
+      </div>
+    </div>
+
+    <div class="skill-card reveal">
+      <div class="skill-header"><span class="skill-icon">🤖</span><span class="skill-name">AI & Local LLMs</span></div>
+      <div class="skill-tags">
+        <span class="stag">Ollama</span><span class="stag">Whisper STT</span><span class="stag">LangChain RAG</span>
+        <span class="stag">ChromaDB Vectors</span><span class="stag">llama3.1:8b</span>
+        <span class="stag">Python Pipelines</span><span class="stag">Qiskit</span>
+        <span class="stag">Post-Quantum Crypto</span>
+      </div>
+    </div>
+
+    <div class="skill-card reveal">
+      <div class="skill-header"><span class="skill-icon">🐍</span><span class="skill-name">Python & Scripting</span></div>
+      <div class="skill-tags">
+        <span class="stag">asyncio</span><span class="stag">paramiko / SSH</span><span class="stag">requests</span>
+        <span class="stag">subprocess</span><span class="stag">psutil</span><span class="stag">redis-py</span>
+        <span class="stag">scapy</span><span class="stag">FastAPI</span><span class="stag">argparse</span>
+        <span class="stag">dotenv</span><span class="stag">pathlib</span>
+      </div>
+    </div>
+
+    <div class="skill-card reveal">
+      <div class="skill-header"><span class="skill-icon">🐧</span><span class="skill-name">Linux Administration</span></div>
+      <div class="skill-tags">
+        <span class="stag">Ubuntu Server 24.04</span><span class="stag">Kali Linux</span>
+        <span class="stag">systemctl</span><span class="stag">Netplan</span><span class="stag">SSH</span>
+        <span class="stag">GRUB Config</span><span class="stag">LVM</span><span class="stag">Bash</span>
+        <span class="stag">Tailscale VPN</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <p class="section-tag reveal">// Projects</p>
+  <h2 class="section-title reveal">What I've Built</h2>
+  <p class="section-sub reveal">Real, working implementations — each one fully documented with configs, troubleshooting notes, and lessons learned.</p>
+
+  <div class="projects-grid">
+
+    <div class="proj-card featured reveal">
+      <div class="proj-top"><span class="proj-icon">🏗️</span><span class="proj-status status-done">Operational</span></div>
+      <div class="proj-body">
+        <h3 class="proj-title">All-in-One Proxmox Enterprise Homelab</h3>
+        <p class="proj-desc">A fully virtualised enterprise network running on a single laptop. pfSense firewall with 3 network segments, Windows Server 2016 Domain Controller (AD DS, DNS, DHCP, PKI), domain-joined Windows 11 client, file server with SMB shares, Dockerised WordPress/MySQL web server, and Tailscale remote access. Built on Proxmox VE 8 booting from an external SSD.</p>
+        <div class="proj-tags">
+          <span class="ptag ptag-blue">Proxmox VE</span><span class="ptag ptag-blue">pfSense</span>
+          <span class="ptag ptag-blue">Active Directory</span><span class="ptag ptag-blue">Windows Server 2016</span>
+          <span class="ptag ptag-green">Docker Compose</span><span class="ptag ptag-green">WordPress</span>
+          <span class="ptag ptag-gray">PKI / AD CS</span><span class="ptag ptag-gray">Tailscale</span>
+        </div>
+      </div>
+      <div class="proj-footer">
+        <a href="https://github.com/ashcybersec/proxmox-homelab" class="proj-link">→ GitHub Repo</a>
+        <a href="https://github.com/ashcybersec/proxmox-homelab/wiki" class="proj-link">Documentation</a>
+      </div>
+    </div>
+
+    <div class="proj-card reveal">
+      <div class="proj-top"><span class="proj-icon">🌐</span><span class="proj-status status-done">Operational</span></div>
+      <div class="proj-body">
+        <h3 class="proj-title">Enterprise Network Labs (EVE-NG / Cisco)</h3>
+        <p class="proj-desc">8+ Cisco IOS labs in EVE-NG covering the full CCNA networking stack: multi-switch VLANs, 802.1Q trunking, inter-VLAN routing, OSPF dynamic routing, HSRP redundancy, site-to-site IPsec VPN, stateful firewall ACLs, and NAT/PAT. All labs documented with full configs and troubleshooting notes.</p>
+        <div class="proj-tags">
+          <span class="ptag ptag-blue">EVE-NG</span><span class="ptag ptag-blue">Cisco IOS</span>
+          <span class="ptag ptag-blue">OSPF</span><span class="ptag ptag-blue">VLANs</span>
+          <span class="ptag ptag-blue">IPsec VPN</span><span class="ptag ptag-blue">HSRP</span>
+          <span class="ptag ptag-gray">NAT/PAT</span><span class="ptag ptag-gray">ACLs</span>
+        </div>
+      </div>
+      <div class="proj-footer">
+        <a href="https://github.com/ashcybersec/eve-ng-labs" class="proj-link">→ GitHub Repo</a>
+      </div>
+    </div>
+
+    <div class="proj-card reveal">
+      <div class="proj-top"><span class="proj-icon">🤖</span><span class="proj-status status-done">Phase 2 Complete</span></div>
+      <div class="proj-body">
+        <h3 class="proj-title">Local AI Assistant Pipeline</h3>
+        <p class="proj-desc">Production-ready microservices AI pipeline: WebSocket audio ingestion → Redis queue → Whisper STT transcription → ChromaDB vector storage → LangChain RAG → Ollama LLM summarisation. ~12 second end-to-end latency. 100% local — no cloud APIs, no data leaving the network.</p>
+        <div class="proj-tags">
+          <span class="ptag ptag-orange">Ollama / llama3.1</span><span class="ptag ptag-orange">Whisper STT</span>
+          <span class="ptag ptag-orange">LangChain RAG</span><span class="ptag ptag-green">FastAPI</span>
+          <span class="ptag ptag-green">Redis</span><span class="ptag ptag-green">ChromaDB</span>
+          <span class="ptag ptag-gray">Python asyncio</span>
+        </div>
+      </div>
+      <div class="proj-footer">
+        <a href="https://github.com/ashcybersec/ai-assistant" class="proj-link">→ GitHub Repo</a>
+      </div>
+    </div>
+
+    <div class="proj-card reveal">
+      <div class="proj-top"><span class="proj-icon">🔍</span><span class="proj-status status-done">Active</span></div>
+      <div class="proj-body">
+        <h3 class="proj-title">Digital Forensics Lab</h3>
+        <p class="proj-desc">Hands-on forensics exercises on Kali Linux: USB imaging with dcfldd, Autopsy/Sleuth Kit file system analysis, timeline analysis with mactime, email and browser forensics, network forensics with tshark, and mobile forensics via ADB. Includes CyberDefenders challenge write-ups.</p>
+        <div class="proj-tags">
+          <span class="ptag ptag-orange">Kali Linux</span><span class="ptag ptag-orange">Autopsy</span>
+          <span class="ptag ptag-orange">tshark</span><span class="ptag ptag-orange">ADB</span>
+          <span class="ptag ptag-gray">dcfldd</span><span class="ptag ptag-gray">Sleuth Kit</span>
+          <span class="ptag ptag-gray">CyberDefenders</span>
+        </div>
+      </div>
+      <div class="proj-footer">
+        <a href="https://github.com/ashcybersec/forensics-lab" class="proj-link">→ GitHub Repo</a>
+      </div>
+    </div>
+
+    <div class="proj-card reveal">
+      <div class="proj-top"><span class="proj-icon">⚛️</span><span class="proj-status status-done">Complete</span></div>
+      <div class="proj-body">
+        <h3 class="proj-title">Post-Quantum Cryptography Lab</h3>
+        <p class="proj-desc">Qiskit-based quantum computing experiments including Bell state demonstrations. Study and practical implementation of NIST FIPS 203/204/205 (Kyber, Dilithium, SPHINCS+). Hybrid TLS exploration with OQS-OpenSSL.</p>
+        <div class="proj-tags">
+          <span class="ptag ptag-blue">Qiskit 2.3</span><span class="ptag ptag-blue">NIST PQC</span>
+          <span class="ptag ptag-blue">Kyber / Dilithium</span>
+          <span class="ptag ptag-gray">OQS-OpenSSL</span><span class="ptag ptag-gray">IBM Quantum</span>
+        </div>
+      </div>
+      <div class="proj-footer">
+        <a href="https://github.com/ashcybersec/pqc-lab" class="proj-link">→ GitHub Repo</a>
+      </div>
+    </div>
+
+    <div class="proj-card reveal">
+      <div class="proj-top"><span class="proj-icon">🛡️</span><span class="proj-status status-wip">Building</span></div>
+      <div class="proj-body">
+        <h3 class="proj-title">SOC Phishing Triage Tool</h3>
+        <p class="proj-desc">AI-assisted phishing email triage using a local Ollama model — no data sent to cloud APIs. Classifies emails, extracts IOCs, generates analyst-ready summaries. Integrated with Wazuh SIEM running in the Proxmox lab environment.</p>
+        <div class="proj-tags">
+          <span class="ptag ptag-orange">Python</span><span class="ptag ptag-orange">Ollama</span>
+          <span class="ptag ptag-orange">Wazuh SIEM</span>
+          <span class="ptag ptag-gray">IOC Extraction</span><span class="ptag ptag-gray">SOC Automation</span>
+        </div>
+      </div>
+      <div class="proj-footer">
+        <a href="https://github.com/ashcybersec/soc-triage" class="proj-link">→ GitHub Repo</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- TIMELINE -->
+<section id="labs">
+  <p class="section-tag reveal">// Lab Journey</p>
+  <h2 class="section-title reveal">How I Got Here</h2>
+  <p class="section-sub reveal">A chronological record of self-directed learning — each phase building on the last.</p>
+
+  <div class="timeline">
+
+    <div class="titem reveal">
+      <div class="titem-meta">Phase 1 · Foundation</div>
+      <div class="titem-title">Proxmox Hypervisor & Network Design</div>
+      <div class="titem-desc">Installed Proxmox VE 8 on an external SSD. Designed a multi-bridge network (vmbr0/1/2) simulating enterprise segmentation. Deployed pfSense as router/firewall with WAN, LAN, and isolated security range. Resolved real issues: ISO extraction, interface assignment, web GUI lockout.</div>
+      <div class="titem-pills"><span class="tp">Proxmox VE</span><span class="tp">pfSense</span><span class="tp">Network Design</span><span class="tp">VirtIO</span></div>
+    </div>
+
+    <div class="titem reveal">
+      <div class="titem-meta">Phase 2 · Identity</div>
+      <div class="titem-title">Active Directory Domain Controller</div>
+      <div class="titem-desc">Deployed DC-01 with AD DS, DNS, DHCP. Domain-joined Windows 11 client. Created OUs, security groups, and GPOs. Migrated DHCP from pfSense to Windows Server. Deployed Enterprise PKI (AD CS) with root certificate pushed via Group Policy.</div>
+      <div class="titem-pills"><span class="tp">AD DS</span><span class="tp">DNS</span><span class="tp">DHCP</span><span class="tp">GPO</span><span class="tp">PKI</span></div>
+    </div>
+
+    <div class="titem reveal">
+      <div class="titem-meta">Phase 3 · Services</div>
+      <div class="titem-title">File Server, Web Server & Docker</div>
+      <div class="titem-desc">Deployed FS-01 with SMB shares and AD-integrated permissions. Built WEB-01 (Ubuntu 24.04) with Apache2 and Docker Compose. Fixed broken docker-compose package and deployed containerised WordPress + MySQL. Configured serial console access via GRUB.</div>
+      <div class="titem-pills"><span class="tp">Docker</span><span class="tp">WordPress</span><span class="tp">Apache</span><span class="tp">SMB</span></div>
+    </div>
+
+    <div class="titem reveal">
+      <div class="titem-meta">Phase 4 · Remote Access</div>
+      <div class="titem-title">Tailscale Zero-Config VPN</div>
+      <div class="titem-desc">Installed Tailscale on Proxmox host to bypass CGNAT on a 5G connection. Enabled subnet routing to expose the full 192.168.1.0/24 lab LAN. Full remote access from anywhere with no port forwarding or public IP required.</div>
+      <div class="titem-pills"><span class="tp">Tailscale</span><span class="tp">WireGuard</span><span class="tp">CGNAT Bypass</span><span class="tp">Subnet Routing</span></div>
+    </div>
+
+    <div class="titem reveal">
+      <div class="titem-meta">Phase 5 · AI</div>
+      <div class="titem-title">Local AI Assistant Pipeline</div>
+      <div class="titem-desc">Built a production-ready microservices AI pipeline entirely on local hardware. FastAPI WebSocket receiver → Redis queue → Whisper STT → ChromaDB → LangChain RAG → Ollama LLM. Resolved dependency conflicts, Whisper checksum errors, and Redis persistence configuration.</div>
+      <div class="titem-pills"><span class="tp">Ollama</span><span class="tp">Whisper</span><span class="tp">ChromaDB</span><span class="tp">RAG</span><span class="tp">FastAPI</span></div>
+    </div>
+
+    <div class="titem reveal">
+      <div class="titem-meta">Phase 6 · Networking</div>
+      <div class="titem-title">EVE-NG Cisco Lab Series</div>
+      <div class="titem-desc">Completed 8+ Cisco IOS labs covering the full CCNA stack: VLANs, 802.1Q trunking, Router-on-a-Stick inter-VLAN routing, OSPF dynamic routing, HSRP redundancy, site-to-site IPsec VPN, stateful ACL firewalling, and NAT/PAT. Each lab fully documented.</div>
+      <div class="titem-pills"><span class="tp">EVE-NG</span><span class="tp">Cisco IOS</span><span class="tp">OSPF</span><span class="tp">VLANs</span><span class="tp">IPsec</span><span class="tp">HSRP</span></div>
+    </div>
+
+    <div class="titem reveal">
+      <div class="titem-meta">Phase 7 · Security</div>
+      <div class="titem-title">Digital Forensics Lab</div>
+      <div class="titem-desc">Practical forensics on Kali Linux: USB imaging with dcfldd, Autopsy/Sleuth Kit analysis, mactime timeline, email and browser forensics, tshark network forensics, and mobile forensics via ADB on a physical OnePlus 8T device. Completed CyberDefenders challenges.</div>
+      <div class="titem-pills"><span class="tp">Kali Linux</span><span class="tp">Autopsy</span><span class="tp">tshark</span><span class="tp">ADB</span><span class="tp">CyberDefenders</span></div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CREDENTIALS -->
+<section id="learning">
+  <p class="section-tag reveal">// Credentials & Learning</p>
+  <h2 class="section-title reveal">Qualifications</h2>
+  <p class="section-sub reveal">Formal credentials backed by hands-on lab work.</p>
+
+  <div class="certs-grid">
+
+    <div class="cert-card reveal">
+      <span class="cert-icon">🎓</span>
+      <div>
+        <div class="cert-title">MSc Cybersecurity</div>
+        <div class="cert-body">Postgraduate degree covering cryptography, network security, digital forensics, and security management frameworks.</div>
+        <span class="cert-status cs-done">Completed</span>
+      </div>
+    </div>
+
+    <div class="cert-card reveal">
+      <span class="cert-icon">🌐</span>
+      <div>
+        <div class="cert-title">CCNA — Cisco Certified Network Associate</div>
+        <div class="cert-body">Industry-recognised networking certification covering routing, switching, VLANs, OSPF, ACLs, VPN, and network security fundamentals.</div>
+        <span class="cert-status cs-done">Certified</span>
+      </div>
+    </div>
+
+    <div class="cert-card reveal">
+      <span class="cert-icon">🎓</span>
+      <div>
+        <div class="cert-title">BEng Engineering</div>
+        <div class="cert-body">Bachelor's degree in Engineering providing the technical and analytical foundation for systems and infrastructure work.</div>
+        <span class="cert-status cs-done">Completed</span>
+      </div>
+    </div>
+
+    <div class="cert-card reveal">
+      <span class="cert-icon">🛡️</span>
+      <div>
+        <div class="cert-title">CompTIA Security+ / CySA+</div>
+        <div class="cert-body">Pursuing industry-recognised cybersecurity certifications to complement hands-on SOC and detection engineering experience.</div>
+        <span class="cert-status cs-planned">Planned</span>
+      </div>
+    </div>
+
+    <div class="cert-card reveal">
+      <span class="cert-icon">⚛️</span>
+      <div>
+        <div class="cert-title">Post-Quantum Cryptography Research</div>
+        <div class="cert-body">Self-directed study of NIST FIPS 203/204/205. Practical Qiskit implementation of quantum circuits and algorithms on IBM Quantum.</div>
+        <span class="cert-status cs-active">Ongoing</span>
+      </div>
+    </div>
+
+    <div class="cert-card reveal">
+      <span class="cert-icon">🔍</span>
+      <div>
+        <div class="cert-title">Digital Forensics (Practical Labs)</div>
+        <div class="cert-body">Extensive practical forensics work covering disk imaging, file system analysis, mobile forensics, network forensics, and evidence handling.</div>
+        <span class="cert-status cs-active">Active</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SECURITY NOTE -->
+<section>
+  <p class="section-tag reveal">// Lab Security</p>
+  <h2 class="section-title reveal" style="font-size:1.6rem;">Zero External Exposure</h2>
+  <div class="skills-grid" style="grid-template-columns:repeat(auto-fill,minmax(280px,1fr));">
+    <div class="skill-card reveal">
+      <div class="skill-header"><span class="skill-icon">🔒</span><span class="skill-name">No Port Forwarding</span></div>
+      <div style="font-size:0.8rem;color:var(--muted);line-height:1.6;">Remote access via Tailscale only. No ports exposed to the internet — zero attack surface from the outside world.</div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-header"><span class="skill-icon">🌐</span><span class="skill-name">Network Segmentation</span></div>
+      <div style="font-size:0.8rem;color:var(--muted);line-height:1.6;">Three isolated virtual networks (vmbr0/1/2). pfSense enforces inter-segment traffic rules. Security range completely isolated.</div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-header"><span class="skill-icon">🤖</span><span class="skill-name">100% Local AI</span></div>
+      <div style="font-size:0.8rem;color:var(--muted);line-height:1.6;">All AI models run locally via Ollama. No audio, transcripts, or data sent to any cloud API or third-party service.</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <p class="section-tag reveal">// Contact</p>
+  <h2 class="section-title reveal">Get In Touch</h2>
+  <p class="section-sub reveal">Open to SOC analyst, detection engineering, and IT infrastructure roles in the UK. Happy to connect with others in the field.</p>
+  <div class="contact-grid reveal">
+    <a href="https://github.com/ashcybersec" class="contact-card">
+      <span class="contact-icon">💻</span>
+      <div><div class="contact-label">GitHub</div><div class="contact-value">github.com/ashcybersec</div></div>
+    </a>
+    <a href="https://linkedin.com/in/ashfaq-ahmed-5586511b5" class="contact-card">
+      <span class="contact-icon">💼</span>
+      <div><div class="contact-label">LinkedIn</div><div class="contact-value">linkedin.com/in/ashfaq-ahmed-5586511b5</div></div>
+    </a>
+    <a href="mailto:ashcybersec@proton.me" class="contact-card">
+      <span class="contact-icon">✉️</span>
+      <div><div class="contact-label">Email</div><div class="contact-value">ashcybersec@proton.me</div></div>
+    </a>
+    <a href="https://tryhackme.com/p/ashfaq-ahmed-5586511b5" class="contact-card">
+      <span class="contact-icon">🎯</span>
+      <div><div class="contact-label">TryHackMe</div><div class="contact-value">tryhackme.com/p/ashfaq-ahmed-5586511b5</div></div>
+    </a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <p>Built with HTML · CSS · JS &nbsp;·&nbsp; Hosted on <span>GitHub Pages</span> &nbsp;·&nbsp; High Wycombe, UK</p>
 </footer>
 
 <script>
-// ── STARS ──
-const starsEl = document.getElementById('stars');
-for (let i = 0; i < 80; i++) {
-  const s = document.createElement('div');
-  s.className = 'star';
-  s.style.cssText = `left:${Math.random()*100}%;top:${Math.random()*100}%;--d:${2+Math.random()*4}s;--delay:${Math.random()*4}s`;
-  starsEl.appendChild(s);
-}
-
-// ── SCROLL REVEAL ──
-const obs = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-}, { threshold: 0.1 });
-document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
-
-// ── GUIDES DATA ──
-const guides = {
-  sadness: {
-    icon: '😢', title: 'Deep Sadness',
-    subtitle: 'Your grief is real. It is love with nowhere to go. Here is how to move through it.',
-    steps: [
-      { title: 'Let yourself cry', text: 'Crying is not weakness. It is how your body processes pain. Do not try to hold it together. Give yourself 10 minutes to cry fully, without judgment.', tip: 'If tears won\'t come, that is okay too. Grief takes many forms.' },
-      { title: 'Name what you miss', text: 'Get a piece of paper and write down three things you miss about her right now. Specific memories. Small things. Her laugh. A habit. Being specific helps the heart process.', tip: 'You do not need to share this with anyone.' },
-      { title: 'Let one person sit with you', text: 'You do not need to talk. Just being physically near another person — a sibling, friend, parent — helps. Call someone and say "Can you come over or can I come to you?"', tip: 'You can say "I just don\'t want to be alone." That is enough.' },
-      { title: 'Do one tiny gentle thing', text: 'Make tea. Step outside for 5 minutes. Wash your face. These are not distractions — they are small anchors back to the present moment.', tip: 'Grief lives partly in the body. Small physical acts help.' },
-      { title: 'Speak to a counsellor', text: 'Grief this deep deserves proper support. Call iCall (9152987821) or Vandrevala (1860-2662-345). They are free, confidential, and trained for exactly this.', tip: 'You do not need to be "in crisis" to call. Just grieving is enough.' },
-    ],
-    reminder: '💙 Sadness after losing someone you loved is not a sign of weakness. It is a sign of how deeply you loved. That love does not disappear — it transforms. One day at a time.'
-  },
-  guilt: {
-    icon: '💭', title: 'Guilt & "What If" Thoughts',
-    subtitle: 'This is one of the most painful parts of suicide bereavement. These steps will help.',
-    steps: [
-      { title: 'Understand what guilt actually is here', text: 'Guilt after a suicide loss is almost universal. It is your mind\'s way of trying to find control in something that had none. "If I had done X, she would still be here" — this feels true, but it is not.', tip: 'The mind prefers guilt to helplessness, because guilt implies you had power. You did not.' },
-      { title: 'Write the guilt thought down', text: 'Take a piece of paper. Write the exact thought: "I should have..." or "If only I had..." Now write next to it: "She was in pain that existed before that moment. One action could not have fixed that."', tip: 'Do this for each guilt thought. Name them. They shrink when examined.' },
-      { title: 'Say this out loud', text: 'Say these words, even if you do not fully believe them yet: "Her death was not my fault. She was in a level of pain that overwhelmed her. I loved her. That love was real. It was enough."', tip: 'Repeat this daily. The brain begins to accept what we repeat.' },
-      { title: 'Talk to someone who understands', text: 'Guilt from suicide loss needs a professional to unpack — not because you are broken, but because it is complex. Contact iCall (9152987821) and specifically say you are experiencing guilt after a suicide loss.', tip: 'Therapists trained in suicide bereavement know exactly how to help with this.' },
-      { title: 'Remember her whole story', text: 'She had a history of pain, experiences, and struggles that went far beyond your relationship. Her decision came from that whole story. You were one loving part of it.', tip: 'Love does not prevent suicide. That is the most painful truth, and it is true.' },
-    ],
-    reminder: '💛 Her death was not your fault. Suicide is the result of overwhelming pain that becomes too much to bear. No single person — no matter how deeply they loved — could have prevented that alone.'
-  },
-  anger: {
-    icon: '🔥', title: 'Anger',
-    subtitle: 'Anger is a normal and valid part of grief. Here is how to feel it safely.',
-    steps: [
-      { title: 'Know that anger is okay', text: 'You may feel angry at her for leaving. At yourself. At doctors, at the world. This is normal. Anger is often grief that has nowhere else to go. You are not a bad person for feeling it.', tip: 'Anger at someone you love and lost does not mean you loved them less.' },
-      { title: 'Move your body', text: 'Anger stores itself in the body. Go for a fast walk. Do 20 jumping jacks. Punch a pillow. Run. Physical movement is one of the most effective ways to process anger safely.', tip: 'Even 10 minutes of movement can reduce the intensity of anger significantly.' },
-      { title: 'Write a letter', text: 'Write a letter to her — or to the situation, or to yourself. Say everything you are angry about. All of it. Do not hold back. Then fold it up and put it away (or burn it safely).', tip: 'You are not sending it. This is for you.' },
-      { title: 'Do not let anger turn inward', text: 'If your anger starts becoming self-directed — hurting yourself, drinking heavily, pushing everyone away — please reach out immediately. Call Vandrevala Foundation at 1860-2662-345.', tip: 'Anger turned inward is the most dangerous kind. Ask for help.' },
-      { title: 'Let grief underneath surface', text: 'Anger is often a protective layer over sadness. Once you have moved the anger through your body, sit quietly and see what is underneath. Often it is deep, quiet grief. That is where the healing begins.', tip: 'You can be angry and sad at the same time. Both are real.' },
-    ],
-    reminder: '🔥 Anger does not make you a bad person. It makes you human. Give it space, move it through your body, and be gentle with yourself. Underneath the anger is love — and loss.'
-  },
-  numbness: {
-    icon: '🌫️', title: 'Numbness',
-    subtitle: 'Feeling nothing after trauma is your mind\'s protective response. This is what to do.',
-    steps: [
-      { title: 'Know that numbness is protection', text: 'Your mind and body have gone into protective shock. Feeling nothing is not wrong — it is your nervous system preventing you from being overwhelmed all at once. It is temporary.', tip: 'Numbness does not mean you did not love her. It means the loss is too big to process at once.' },
-      { title: 'Use your senses to ground yourself', text: 'Hold something cold (ice, a cold glass). Smell something strong (chai, coffee, a candle). Touch a textured surface. These sensory inputs bring you back to the present moment gently.', tip: 'Try the 5-4-3-2-1 technique: name 5 things you can see, 4 you can touch, 3 you can hear, 2 you can smell, 1 you can taste.' },
-      { title: 'Do not force feelings', text: 'Do not try to force yourself to cry or feel. The feelings will come. Forcing them can backfire. Instead, create gentle conditions: soft music, looking at photos, resting.', tip: 'Emotions surface when the body feels safe enough to let them.' },
-      { title: 'Maintain basic physical care', text: 'Even when numb, keep eating small amounts, keep drinking water, keep sleeping at regular times. The body needs these basics even when the mind is shut down.', tip: 'Set alarms if needed — eat at 8am, 1pm, 7pm. Keep it simple.' },
-      { title: 'Speak to a doctor', text: 'If numbness persists for more than 2-3 weeks, or if it is accompanied by an inability to function, speak to a doctor or psychiatrist. This can be a sign of clinical depression requiring support.', tip: 'Call NIMHANS outreach (080-46110007) for guidance on Delhi-based psychiatrists.' },
-    ],
-    reminder: '🌫️ Numbness is not coldness. It is protection. Your love for her is still there — it has simply gone quiet while your mind recovers. Be patient with yourself.'
-  },
-  anxiety: {
-    icon: '💓', title: 'Anxiety & Panic',
-    subtitle: 'When panic strikes, these steps will help bring you back to safety.',
-    steps: [
-      { title: 'Use the breathing exercise above', text: 'When panic hits, scroll up to the "Breathe With Me" section and do the guided breathing for 2-3 minutes. This directly calms your nervous system by activating the parasympathetic response.', tip: 'Box breathing: Inhale 4 seconds → Hold 4 seconds → Exhale 4 seconds → Hold 4 seconds. Repeat 4 times.' },
-      { title: 'Ground yourself immediately', text: 'Press your feet flat on the floor. Feel the weight of your body in the chair. Name 5 things you can physically see right now. You are here. You are safe in this moment.', tip: 'Panic makes you feel like something terrible is happening NOW. Grounding reminds your brain it is not.' },
-      { title: 'Call someone you trust', text: 'During a panic episode, hearing a familiar voice is powerful. Call a family member or friend — you do not need to explain. Just say "I am feeling very anxious, can you talk to me for a few minutes?"', tip: 'If you have no one to call, call iCall: 9152987821. They will talk you through it.' },
-      { title: 'Cold water on your face', text: 'Splash cold water on your face or hold a cold damp cloth on the back of your neck. This triggers the mammalian dive reflex and can stop a panic attack within 30-90 seconds.', tip: 'This is a clinically validated technique. Keep a wet cloth in the fridge.' },
-      { title: 'Track your triggers', text: 'Notice what triggers panic: songs, places, times of day. Write them in a notes app. Knowing your triggers lets you prepare, and also helps a therapist enormously.', tip: 'Triggers are not things to avoid forever — they are things to process slowly, with help.' },
-    ],
-    reminder: '💓 A panic attack cannot hurt you, even though it feels terrifying. It will pass. Breathe slowly, ground yourself, and call someone. You are not in danger — your body is just overwhelmed with grief.'
-  },
-  whyquestions: {
-    icon: '❓', title: 'The Unanswerable "Why"',
-    subtitle: 'The desperate need for an explanation is one of grief\'s cruelest parts. Here is how to hold it.',
-    steps: [
-      { title: 'Understand why the question tortures you', text: 'Your mind needs "why" because knowing why would restore a sense of order and control to something chaotic. But suicide often leaves no clear, single answer — and that is its own kind of devastation.', tip: 'The need for "why" is not a flaw. It is deeply human.' },
-      { title: 'Know that there may never be a full answer', text: 'She may not have left a note. Or the note may not explain everything. Or the explanation may make no logical sense. This is painful, but accepting that "why" may remain incomplete is part of healing.', tip: 'The absence of an answer does not mean something was wrong with your love for her.' },
-      { title: 'Shift from "why" to "what"', text: 'Instead of "why did she do this," try asking "what do I need right now?" or "what can I do today to take care of myself?" This redirects your energy from a locked door to an open one.', tip: 'This is not giving up on her. It is surviving for yourself.' },
-      { title: 'Talk to others who have been through this', text: 'Other suicide loss survivors understand this specific torture of "why" better than anyone. iCall (9152987821) can connect you with grief support groups where others share this experience.', tip: 'You do not have to explain yourself to people who have not been through this.' },
-      { title: 'Write her a letter asking your questions', text: 'Write down all your "why" questions in a letter to her. All of them. Every single one. Then write what you imagine she might have said — not what she did say, but what the part of her that loved you might say.', tip: 'This is not about getting real answers. It is about releasing the questions from your chest.' },
-    ],
-    reminder: '❓ You may never know "why." And that is one of the most painful things about this kind of loss. Sitting with the unanswerable is one of the hardest things a human can do. You are doing it. That takes enormous strength.'
-  },
-  isolation: {
-    icon: '🌑', title: 'Isolation & Loneliness',
-    subtitle: 'Feeling alone in this grief is almost universal. Here is how to find connection.',
-    steps: [
-      { title: 'Name it to someone', text: 'Tell at least one person today — a sibling, a parent, a close friend — "I am really struggling and I feel very alone right now." You do not need to explain more than that. Just say it.', tip: 'People often want to help but do not know what to do. Naming what you need gives them permission to show up.' },
-      { title: 'Seek others who understand specifically', text: 'General friends may struggle to understand suicide bereavement specifically. Call iCall (9152987821) and ask about grief support groups in Delhi. Being in a room with others who truly understand can break isolation instantly.', tip: 'You do not need to explain yourself to someone who has lived it.' },
-      { title: 'Online community', text: 'The Alliance of Hope for Suicide Loss Survivors (allianceofhope.org) has free online forums available 24/7. Real people, real grief, real understanding — from wherever you are in the world.', tip: 'Online communities are not a lesser form of connection. For suicide bereavement, they can be life-changing.' },
-      { title: 'Set small social targets', text: 'You do not need to "be social." Set a tiny target: one text message to one person today. One 5-minute phone call. One meal with another person this week. Small steps.', tip: 'Isolation tends to deepen depression. Even minimal connection helps.' },
-      { title: 'Stay physically near others', text: 'If being alone feels unbearable, go somewhere where other people are — a chai shop, a park, a family member\'s home. You do not have to talk. Just being near others can help.', tip: 'Human presence alone — even with strangers — reduces the nervous system\'s alarm state.' },
-    ],
-    reminder: '🌑 You are not alone, even when it feels completely that way. What you are carrying is real, heavy, and almost impossible to carry without others. Reach out — even one small step toward connection is the right direction.'
-  },
-  cantfunction: {
-    icon: '🛏️', title: 'Can\'t Function',
-    subtitle: 'When everything feels impossible, this is your survival guide for today.',
-    steps: [
-      { title: 'Today\'s only job is the next hour', text: 'Do not think about tomorrow, next week, or the rest of your life. The only question right now is: what do you need in the next 60 minutes? That is all. Everything else can wait.', tip: 'Grief makes the future feel unbearable. Stay only in the present hour.' },
-      { title: 'Eat something right now', text: 'Even if you are not hungry. Even if it is just two biscuits or a banana. Your brain cannot regulate emotions without fuel. Eat something small, right now, before doing anything else.', tip: 'Hunger worsens every difficult emotion. This is not small.' },
-      { title: 'Ask someone to be with you today', text: 'Call or message one person — anyone — and say "Can you be with me today? I am not doing well." Let them come. You do not need to perform or explain. Just let them be there.', tip: 'Accepting help is not weakness. It is what this situation requires.' },
-      { title: 'Contact a professional today', text: 'If you cannot function, this has crossed into a mental health crisis that deserves professional support. Call iCall now: 9152987821. Or ask someone to take you to a doctor. Today, not next week.', tip: 'You would not try to treat a broken leg at home. Treat your mind with the same care.' },
-      { title: 'Remove immediate dangers', text: 'If you have any thoughts of harming yourself, please tell someone immediately and call KIRAN: 1800-599-0019 (free, 24/7). If there are medications, alcohol, or other risks in your environment, ask someone to remove them today.', tip: 'If you are in immediate danger, go to the nearest hospital emergency department now.' },
-    ],
-    reminder: '🛏️ Not being able to function is not weakness — it is a sign of how serious this loss is. Please do not try to manage this alone. Today, right now, reach out to one person or one helpline. One call can change today.'
-  }
-};
-
-function showGuide(type) {
-  document.querySelectorAll('.feeling-card').forEach(c => c.classList.remove('active'));
-  document.querySelector(`[data-feeling="${type}"]`).classList.add('active');
-
-  const g = guides[type];
-  document.getElementById('guide-icon').textContent = g.icon;
-  document.getElementById('guide-title').textContent = g.title;
-  document.getElementById('guide-subtitle').textContent = g.subtitle;
-
-  const stepsEl = document.getElementById('guide-steps');
-  stepsEl.innerHTML = g.steps.map((s, i) => `
-    <li class="step-item">
-      <div class="step-num">${i + 1}</div>
-      <div class="step-content">
-        <h4>${s.title}</h4>
-        <p>${s.text}</p>
-        ${s.tip ? `<div class="step-tip">💡 ${s.tip}</div>` : ''}
-      </div>
-    </li>
-  `).join('');
-
-  document.getElementById('guide-reminder').innerHTML = g.reminder;
-
-  const panel = document.getElementById('guide-panel');
-  panel.classList.add('visible');
-  setTimeout(() => panel.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
-}
-
-// ── BREATHING ──
-let breathInterval = null;
-let breathPhase = 0;
-let breathRunning = false;
-const phases = [
-  { label: 'Breathe In...', count: 4, class: 'inhale' },
-  { label: 'Hold...', count: 4, class: 'inhale' },
-  { label: 'Breathe Out...', count: 4, class: 'exhale' },
-  { label: 'Hold...', count: 4, class: 'exhale' },
-];
-let phaseIdx = 0;
-let counter = 0;
-
-function toggleBreath() {
-  if (breathRunning) {
-    clearInterval(breathInterval);
-    breathRunning = false;
-    document.getElementById('breath-btn').textContent = 'Start Breathing Exercise';
-    document.getElementById('breath-text').textContent = 'Press start when ready';
-    document.getElementById('breath-count').textContent = '—';
-    document.getElementById('breath-circle').className = 'breathing-circle';
-    phaseIdx = 0; counter = 0;
-  } else {
-    breathRunning = true;
-    document.getElementById('breath-btn').textContent = 'Stop';
-    runBreathPhase();
-    breathInterval = setInterval(() => {
-      counter--;
-      if (counter <= 0) {
-        phaseIdx = (phaseIdx + 1) % phases.length;
-        runBreathPhase();
-      } else {
-        document.getElementById('breath-count').textContent = counter;
-      }
-    }, 1000);
-  }
-}
-
-function runBreathPhase() {
-  const phase = phases[phaseIdx];
-  counter = phase.count;
-  document.getElementById('breath-text').textContent = phase.label;
-  document.getElementById('breath-count').textContent = counter;
-  const c = document.getElementById('breath-circle');
-  c.className = 'breathing-circle ' + phase.class;
-}
-
-// ── WEEKLY PLAN DATA ──
-const weeks = [
-  { range: '1', theme: 'Survive', accent: '#C4714F', accentPale: '#FBF0EA', tasks: [
-    'Tell someone you trust what has happened — you should not carry this alone',
-    'Let people bring food, sit with you, just be present — accept help',
-    'Do not make any major decisions this week',
-    'Find a helpline number and save it in your phone',
-    'Contact a doctor or counsellor to book an appointment',
-  ]},
-  { range: '2', theme: 'Stabilise', accent: '#2D7D6F', accentPale: '#EBF5F3', tasks: [
-    'Establish a simple daily routine — wake, eat, short walk, sleep',
-    'Talk to at least one person every single day',
-    'Try to spend 20 minutes outside each day',
-    'Start a grief journal — write whatever comes, no editing',
-    'Attend your first counselling session if booked',
-  ]},
-  { range: '3', theme: 'Express', accent: '#B5862A', accentPale: '#FFF8E7', tasks: [
-    'Allow yourself to cry — do not try to hold it together all the time',
-    'Write a letter to her saying everything you need to say (you do not send it)',
-    'Contact a suicide bereavement support group',
-    'Tell people around you what support you actually need from them',
-    'Identify one or two people you can call at any time without explanation',
-  ]},
-  { range: '4', theme: 'Acknowledge', accent: '#6C3483', accentPale: '#F5EEF8', tasks: [
-    'Name the emotions you are feeling — anger, guilt, love, confusion — all valid',
-    'Read or watch something about suicide bereavement',
-    'Continue counselling — if you have not started, now is the time',
-    'Do one small enjoyable thing this week, without guilt',
-    'Check in on your own physical health — doctor visit if needed',
-  ]},
-  { range: '5–6', theme: 'Understand', accent: '#1F618D', accentPale: '#D6EAF8', tasks: [
-    'Explore grief literature or podcasts at your own pace',
-    'Begin to understand that "why" questions may never be fully answered',
-    'Gently reconnect with one or two social activities',
-    'Continue your journal — notice any changes in your feelings over time',
-    'Discuss medication options with your doctor if depression feels severe',
-  ]},
-  { range: '7–8', theme: 'Reconnect', accent: '#117A65', accentPale: '#D1F2EB', tasks: [
-    'Spend time with people who knew her and share memories of her',
-    'Return to a hobby or activity you enjoyed before — even briefly',
-    'Continue therapy — explore guilt and "what if" thoughts with your therapist',
-    'Think about a small, personal way to remember her',
-    'Be gentle with yourself on hard days — anniversaries, triggers, bad nights',
-  ]},
-  { range: '9–10', theme: 'Rebuild', accent: '#1A5276', accentPale: '#D6EAF8', tasks: [
-    'Identify one area of life to gently re-engage with (work, social, creative)',
-    'Consider joining a grief support group if you have not already',
-    'Practice one small self-care habit daily',
-    'Notice moments — however brief — when you feel okay. They count.',
-    'Talk about her with someone who loved her too. Sharing memories keeps her real.',
-  ]},
-  { range: '11–12', theme: 'Carry Forward', accent: '#2D7D6F', accentPale: '#EBF5F3', tasks: [
-    'Reflect on how you have changed — grief changes us, not always wrongly',
-    'Think about what ongoing support you want — therapy, groups, self-help',
-    'Find a way to honour her memory that feels right to you',
-    'Recognise what you have survived — this took real courage',
-    'There is no deadline on grief. Continue at your own pace beyond week 12.',
-  ]},
-];
-
-const container = document.getElementById('weeks-container');
-weeks.forEach((w, wi) => {
-  const row = document.createElement('div');
-  row.className = 'week-row';
-  row.style.setProperty('--accent', w.accent);
-  row.innerHTML = `
-    <div class="week-dot" style="border-color:${w.accent};color:${w.accent}">W${w.range}</div>
-    <div class="week-body">
-      <div class="week-header" onclick="toggleWeek(${wi})">
-        <span class="week-title">Week ${w.range}</span>
-        <span class="week-theme" style="background:${w.accentPale};color:${w.accent}">${w.theme}</span>
-        <span class="week-chevron">▾</span>
-      </div>
-      <div class="week-tasks">
-        ${w.tasks.map((t, ti) => `
-          <div class="week-task">
-            <div class="task-check" onclick="toggleCheck(this)" style="border-color:${w.accent}"></div>
-            <span>${t}</span>
-          </div>
-        `).join('')}
-      </div>
-    </div>
-  `;
-  container.appendChild(row);
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+document.querySelectorAll('.skills-grid,.projects-grid,.certs-grid,.contact-grid').forEach(grid => {
+  Array.from(grid.children).forEach((child, i) => { child.style.transitionDelay = `${i * 0.07}s`; });
 });
-
-function toggleWeek(idx) {
-  const rows = document.querySelectorAll('.week-row');
-  rows[idx].classList.toggle('open');
-}
-
-function toggleCheck(el) {
-  el.classList.toggle('checked');
-  const accent = el.closest('.week-row').style.getPropertyValue('--accent');
-  if (el.classList.contains('checked')) el.style.background = accent;
-  else el.style.background = '';
-}
-
-// ── QUOTES ──
-const quotes = [
-  "You are allowed to grieve. You are allowed to feel everything.",
-  "Grief is the price of love, and your love was real.",
-  "Her death was not your fault. You loved her. That was real.",
-  "You do not have to be okay right now. Just be here.",
-  "Healing is not linear. One hard day does not erase your progress.",
-  "You are stronger than you know, even on the days it does not feel that way.",
-  "It is okay to carry her in your heart while still choosing to live.",
-  "Asking for help is not weakness. It is what this moment requires.",
-  "You survived today. That is enough.",
-  "Grief is love that has nowhere to go — and it is sacred.",
-  "One small step forward is still forward.",
-  "You do not have to explain your grief to anyone.",
-  "She was loved. And you loved well.",
-  "There is no right way to grieve. There is only your way.",
-  "The days will not all feel like this. I promise you that.",
-];
-let qIdx = 0;
-function nextQuote() {
-  qIdx = (qIdx + 1) % quotes.length;
-  const el = document.getElementById('quote-display');
-  el.style.opacity = 0;
-  setTimeout(() => {
-    el.textContent = `"${quotes[qIdx]}"`;
-    el.style.opacity = 1;
-  }, 300);
-}
-document.getElementById('quote-display').style.transition = 'opacity 0.3s';
 </script>
 </body>
 </html>
